@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Valentine 💖</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* First Page Card */
+    .card {
+      background: white;
+      padding: 35px 25px;
+      border-radius: 25px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform:scale(0.9);}
+      to {opacity:1; transform:scale(1);}
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #ff4d6d;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    /* Photo */
+    .couple-pic {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #ff4d6d;
+      margin: 15px 0;
+      box-shadow: 0 5px 15px rgba(255,77,109,0.4);
+    }
+
+    /* Buttons */
+    .btn-box {
+      position: relative;
+      height: 120px;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      position: absolute;
+      transition: 0.3s;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      box-shadow: 0 5px 15px rgba(255,77,109,0.4);
+    }
+
+    #yesBtn:hover {
+      transform: translateX(-50%) scale(1.1);
+    }
+
+    #noBtn {
+      background: #aaa;
+      color: white;
+      left: 20%;
+      top: 0;
+    }
+
+    /* Second Page */
+    .message-page {
+      display: none;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      width: 100%;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .message-box {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 25px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      animation: fadeIn 1s ease;
+    }
+
+    .message-box h2 {
+      font-family: 'Pacifico', cursive;
+      color: #ff4d6d;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .heart {
+      font-size: 40px;
+      margin: 10px 0;
+      animation: beat 1.5s infinite;
+    }
+
+    @keyframes beat {
+      0% {transform:scale(1);}
+      50% {transform:scale(1.3);}
+      100% {transform:scale(1);}
+    }
+
+    /* Video */
+    .love-video {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 20px;
+      margin: 15px 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .message-box p {
+      color: #444;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- First Page -->
+<div class="card" id="mainCard">
+
+  <h1>Hey My Love 💕</h1>
+
+  <!-- Photo -->
+  <img src="photo.jpg" class="couple-pic" alt="Our Photo">
+
+  <p>Will you be my Valentine and make my world beautiful? 🌹</p>
+
+  <div class="btn-box">
+    <button id="noBtn">No 😝</button>
+    <button id="yesBtn">Yes 💖</button>
+  </div>
+
+</div>
+
+
+<!-- Second Page -->
+<div class="message-page" id="messagePage">
+
+  <div class="message-box">
+
+    <h2>You Said YES! 💘</h2>
+
+    <div class="heart">❤️</div>
+
+    <!-- Video -->
+    <video class="love-video" autoplay loop muted playsinline>
+      <source src="video.mp4" type="video/mp4">
+    </video>
+
+    <p>
+      My love, you are the most beautiful part of my life ✨<br><br>
+      Every moment with you feels magical 🌸<br><br>
+      Thank you for being my Valentine and my forever 💍💞<br><br>
+      I Love You So Much ❤️
+    </p>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const mainCard = document.getElementById("mainCard");
+const messagePage = document.getElementById("messagePage");
+
+// Move No button
+noBtn.addEventListener("mouseover", moveBtn);
+noBtn.addEventListener("click", moveBtn);
+
+function moveBtn() {
+
+  const box = document.querySelector(".btn-box");
+
+  const maxX = box.clientWidth - noBtn.offsetWidth;
+  const maxY = box.clientHeight - noBtn.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+// Yes button
+yesBtn.addEventListener("click", () => {
+  mainCard.style.display = "none";
+  messagePage.style.display = "flex";
+});
+
+</script>
+
+</body>
+</html>
